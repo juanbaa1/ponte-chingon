@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Ponte Chingón + De Cero a Empresario — Libersity · Titto Gálvez</title>
+<meta name="description" content="Los dos libros de Titto Gálvez que están transformando la mentalidad de miles de emprendedores en Latinoamérica. Pedilos por WhatsApp." />
+<meta property="og:title" content="Ponte Chingón + De Cero a Empresario · Titto Gálvez" />
+<meta property="og:description" content="Si tu negocio no funciona sin vos, todavía no tenés un negocio. Tenés un empleo." />
+<meta property="og:type" content="website" />
+
+<!-- Google Tag / Meta Pixel placeholders -->
+<!-- <script>/* GA4 here */</script> -->
+<!-- <script>/* Meta Pixel here */</script> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Archivo:wght@800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0A0A0A',
+          coal: '#141414',
+          soot: '#1c1c1c',
+          ash: '#262626',
+          smoke: '#EAEAEA',
+          gold: '#F5B400',
+          goldhi: '#FFC633',
+          wa: '#25D366',
+          wad: '#1ebe5d',
+        },
+        fontFamily: {
+          display: ['Archivo', 'Space Grotesk', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          grot: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --grain-opacity: .035;
+  }
+  html, body { background:#0A0A0A; color:#fff; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    line-height:1.6;
+  }
+  .font-display { font-family:'Archivo','Space Grotesk',system-ui,sans-serif; font-weight:900; letter-spacing:-0.02em; line-height:0.95; }
+  .font-grot { font-family:'Space Grotesk',system-ui,sans-serif; }
+
+  /* Grain texture */
+  .grain::before {
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+  }
+
+  /* Subtle gold radial behind hero */
+  .glow-gold {
+    background: radial-gradient(60% 50% at 50% 0%, rgba(245,180,0,.18), rgba(245,180,0,0) 60%);
+  }
+  .glow-wa {
+    box-shadow: 0 0 0 0 rgba(37,211,102,.6);
+    animation: waPulse 2.2s ease-out infinite;
+  }
+  @keyframes waPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.55); }
+    70%  { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  /* Reveal */
+  .reveal { opacity:0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform: none; }
+  .reveal-d1 { transition-delay:.06s; }
+  .reveal-d2 { transition-delay:.12s; }
+  .reveal-d3 { transition-delay:.18s; }
+  .reveal-d4 { transition-delay:.24s; }
+
+  /* Marquee */
+  .marquee { display:flex; gap:3rem; animation: marq 38s linear infinite; }
+  @keyframes marq { from { transform:translateX(0) } to { transform:translateX(-50%) } }
+
+  /* Book mockup — perspective + shadow */
+  .book-wrap { perspective: 1400px; }
+  .book {
+    position:relative;
+    transform-style: preserve-3d;
+    transition: transform .8s cubic-bezier(.2,.7,.2,1);
+    will-change: transform;
+  }
+  .book-face {
+    position:relative;
+    border-radius: 4px 10px 10px 4px;
+    overflow:hidden;
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,.85),
+      0 8px 20px -8px rgba(0,0,0,.7),
+      inset 0 0 0 1px rgba(255,255,255,.04);
+  }
+  .book-face::after {
+    /* page edges spine illusion */
+    content:""; position:absolute; top:0; bottom:0; left:0; width:12px;
+    background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(255,255,255,.06) 45%, rgba(0,0,0,.5));
+    mix-blend-mode: multiply;
+  }
+  .book-face::before {
+    /* light sheen */
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(115deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 70%, rgba(255,255,255,.08) 100%);
+  }
+  .book-shadow {
+    position:absolute; left:8%; right:8%; bottom:-26px; height:42px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.85), rgba(0,0,0,0) 70%);
+    filter: blur(2px);
+  }
+
+  /* Tilt classes */
+  .tilt-l { transform: rotateY(18deg) rotateZ(-3deg); }
+  .tilt-r { transform: rotateY(-16deg) rotateZ(3deg); }
+  .tilt-c { transform: rotateY(-6deg) rotateX(4deg); }
+
+  @media (hover:hover) {
+    .book-wrap:hover .book.tilt-l { transform: rotateY(10deg) rotateZ(-1.5deg) translateY(-6px); }
+    .book-wrap:hover .book.tilt-r { transform: rotateY(-9deg) rotateZ(1.5deg) translateY(-6px); }
+  }
+
+  /* Subtle floating */
+  .float-a { animation: floaty 7s ease-in-out infinite; }
+  .float-b { animation: floaty 8.4s ease-in-out infinite reverse; }
+  @keyframes floaty { 0%,100% { translate: 0 0 } 50% { translate: 0 -10px } }
+
+  /* CTA */
+  .cta-wa {
+    background: linear-gradient(180deg, #2ee177 0%, #1ebe5d 100%);
+    box-shadow: 0 10px 30px -8px rgba(37,211,102,.55), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .cta-wa:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -10px rgba(37,211,102,.7), inset 0 1px 0 rgba(255,255,255,.3); }
+  .cta-gold {
+    background: linear-gradient(180deg, #FFC633 0%, #E0A300 100%);
+    color:#0A0A0A;
+    box-shadow: 0 10px 30px -10px rgba(245,180,0,.55), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .cta-gold:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -12px rgba(245,180,0,.7); }
+  .ghost {
+    border:1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(8px);
+  }
+  .ghost:hover { border-color: rgba(245,180,0,.55); color:#F5B400; }
+
+  /* Cards */
+  .card { background: linear-gradient(180deg, #161616 0%, #101010 100%); border:1px solid rgba(255,255,255,.06); }
+  .card-gold { background: linear-gradient(180deg, rgba(245,180,0,.07), rgba(245,180,0,.02) 60%, rgba(245,180,0,0)), #121212; border:1px solid rgba(245,180,0,.35); box-shadow: 0 0 0 1px rgba(245,180,0,.05), 0 30px 80px -20px rgba(245,180,0,.18); }
+
+  /* Pain card icon */
+  .pain-num { font-family:'Archivo','Space Grotesk',sans-serif; font-weight:900; font-size: 64px; line-height:.8; color: rgba(245,180,0,.18); letter-spacing:-.05em; }
+
+  /* Section eyebrow */
+  .eyebrow { letter-spacing:.18em; text-transform:uppercase; font-size:11px; font-weight:600; color:#F5B400; }
+
+  /* Footer divider line */
+  .hairline { border-top:1px solid rgba(255,255,255,.07); }
+
+  /* Floating WA button */
+  .fab {
+    position:fixed; right:16px; bottom:16px; z-index:60;
+    display:flex; align-items:center; gap:.6rem;
+    padding:.85rem 1.1rem .85rem .85rem;
+    border-radius: 999px;
+    transform: translateY(120%);
+    transition: transform .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .fab.visible { transform: translateY(0); }
+  .fab-icon {
+    width:42px; height:42px; border-radius:999px; display:grid; place-items:center;
+    background: radial-gradient(circle at 30% 30%, #4be08c, #1aa650);
+  }
+  .fab-label { font-weight:600; font-size:14px; color:#fff; padding-right:.25rem; }
+
+  /* FAQ */
+  details > summary { list-style: none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  details[open] .faq-plus { transform: rotate(45deg); }
+  .faq-plus { transition: transform .25s ease; }
+
+  /* Comparison */
+  .cmp-row { display:grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .cmp-cell { padding: 18px 20px; border-top: 1px solid rgba(255,255,255,.08); }
+  .cmp-cell.bad { background: rgba(255,255,255,.015); color:#aaa; }
+  .cmp-cell.good { background: rgba(245,180,0,.04); color:#fff; }
+
+  /* Marquee logos */
+  .flag { font-size: 24px; }
+
+  /* Quote large */
+  .quotemark {
+    font-family:'Archivo','Space Grotesk',sans-serif;
+    font-weight:900;
+    font-size: 140px;
+    color: rgba(245,180,0,.18);
+    line-height: .6;
+  }
+
+  /* Testimonial wa-style */
+  .wa-bubble {
+    background:#1f2c33;
+    border-radius: 12px 12px 12px 4px;
+    padding: 12px 14px;
+    color:#e9edef;
+    position:relative;
+  }
+  .wa-bubble .stars { color:#F5B400; letter-spacing:2px; }
+
+  /* Hide scrollbar for testimonials carousel */
+  .no-scrollbar::-webkit-scrollbar { display:none; }
+  .no-scrollbar { scrollbar-width:none; }
+
+  /* Tweaks panel */
+  #tweaks-toggle {}
+  .tweaks {
+    position: fixed; right:16px; top:80px; width: 320px; max-height: 70vh; overflow:auto;
+    background:#0e0e0e; border:1px solid rgba(255,255,255,.08); border-radius:14px;
+    padding: 14px; z-index: 70; box-shadow: 0 30px 60px rgba(0,0,0,.6);
+    color:#eaeaea; font-size: 13px;
+    transform: translateX(120%); transition: transform .35s ease;
+  }
+  .tweaks.open { transform: none; }
+  .tweaks label { display:block; font-size:11px; color:#aaa; margin: 10px 0 4px; text-transform: uppercase; letter-spacing:.08em; }
+  .tweaks input[type=text], .tweaks input[type=number] {
+    width:100%; background:#1a1a1a; border:1px solid #262626; color:#fff; padding:8px 10px; border-radius:8px; font-size:13px;
+  }
+  .tweaks .row { display:flex; gap:8px; align-items:center; }
+  .tweaks .swatch { width: 28px; height:28px; border-radius:8px; border:1px solid rgba(255,255,255,.15); cursor:pointer; }
+  .tweaks .swatch.active { outline: 2px solid #F5B400; outline-offset:2px; }
+  .tweaks h4 { font-family:'Space Grotesk'; font-weight:700; margin: 8px 0 0; }
+  .tweaks .close { position:absolute; top:8px; right:10px; cursor:pointer; color:#888; }
+
+  /* Header */
+  header.sticky-hd {
+    transition: background-color .25s ease, border-color .25s ease, backdrop-filter .25s ease;
+  }
+  header.scrolled {
+    background-color: rgba(10,10,10,.78);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+
+  /* Big section headlines */
+  h2.section-title { font-family:'Archivo','Space Grotesk',sans-serif; font-weight:900; letter-spacing:-.02em; line-height:.98; }
+
+  /* "Underline" gold marker */
+  .gold-underline { background: linear-gradient(transparent 62%, rgba(245,180,0,.45) 62%); padding: 0 .06em; }
+
+  /* Ribbon badge */
+  .ribbon {
+    display:inline-flex; align-items:center; gap:.45rem;
+    padding: 6px 10px; border-radius: 999px;
+    background: rgba(245,180,0,.12); color:#F5B400;
+    border:1px solid rgba(245,180,0,.35);
+    font-size: 11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  }
+
+  /* Strike price */
+  .strike { text-decoration: line-through; text-decoration-thickness:2px; text-decoration-color: rgba(255,255,255,.35); }
+
+  /* Section divider lines */
+  .divider-dot { width:6px; height:6px; border-radius:999px; background:#F5B400; }
+
+  /* Mobile fixes */
+  @media (max-width: 640px) {
+    .quotemark { font-size: 80px; }
+    .pain-num { font-size: 56px; }
+  }
+</style>
+</head>
+<body class="grain antialiased selection:bg-gold selection:text-ink">
+
+<!-- =========================== HEADER =========================== -->
+<header id="hdr" class="sticky-hd fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[64px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 group">
+      <span class="grid place-items-center w-9 h-9 rounded-lg" style="background:linear-gradient(180deg,#1a1a1a,#0e0e0e); border:1px solid rgba(245,180,0,.35);">
+        <!-- L mark (original, not a brand logo) -->
+        <svg viewBox="0 0 24 24" class="w-5 h-5"><path d="M5 4 H8 V17 H17 V20 H5 Z" fill="#F5B400"/><circle cx="18" cy="6" r="2" fill="#F5B400"/></svg>
+      </span>
+      <span class="font-grot font-bold tracking-tight text-[15px]">Libersity<span class="text-gold">.</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-[13px] text-smoke/80 font-medium">
+      <a href="#libros" class="hover:text-gold">Los libros</a>
+      <a href="#combo" class="hover:text-gold">Combo</a>
+      <a href="#autor" class="hover:text-gold">Autor</a>
+      <a href="#faq" class="hover:text-gold">FAQ</a>
+    </nav>
+    <a id="hdr-cta" href="#wa-link" data-wa class="cta-wa rounded-full px-4 sm:px-5 py-2.5 text-[13px] sm:text-sm font-semibold text-white flex items-center gap-2 transition-all">
+      <svg viewBox="0 0 32 32" class="w-4 h-4" fill="white"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.6L3 29l7.2-2.3a12.5 12.5 0 0 0 5.8 1.4h0c6.9 0 12.6-5.6 12.6-12.6S22.9 3 16 3Zm7.4 17.8c-.3.9-1.6 1.7-2.3 1.8-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.6-3.3-1.4-5.4-4.6-5.6-4.8-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5.3.7 1 2.3 1.1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.7-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.8Z"/></svg>
+      <span>Pedir mi libro</span>
+    </a>
+  </div>
+</header>
+
+<main id="top" class="relative z-10">
+
+<!-- =========================== HERO =========================== -->
+<section class="relative pt-[96px] sm:pt-[120px] pb-20 sm:pb-28 overflow-hidden">
+  <div class="absolute inset-0 glow-gold pointer-events-none"></div>
+  <div class="absolute inset-x-0 -top-10 h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+    <div class="lg:col-span-7 max-w-2xl">
+      <div class="reveal flex flex-wrap items-center gap-2 mb-6">
+        <span class="ribbon">Amazon Best Seller</span>
+        <span class="text-[11px] text-smoke/60 tracking-widest uppercase">+10.000 lectores · 30+ países</span>
+      </div>
+
+      <h1 class="reveal reveal-d1 font-display text-[44px] sm:text-[64px] lg:text-[78px]">
+        Si tu negocio<br/>
+        no funciona<br/>
+        <span class="gold-underline">sin vos</span>,<br/>
+        todavía no tenés<br/>
+        un negocio.<br/>
+        <span class="text-gold">Tenés un empleo.</span>
+      </h1>
+
+      <p class="reveal reveal-d2 mt-7 sm:mt-8 text-smoke/80 text-[17px] sm:text-[19px] max-w-xl font-medium" id="hero-sub">
+        Los dos libros que están transformando la mentalidad de miles de emprendedores en Latinoamérica.
+      </p>
+
+      <div class="reveal reveal-d3 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <a href="#wa-link" data-wa class="cta-wa rounded-full px-7 py-4 text-white font-semibold text-[16px] flex items-center justify-center gap-3 transition-all">
+          <svg viewBox="0 0 32 32" class="w-5 h-5" fill="white"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.6L3 29l7.2-2.3a12.5 12.5 0 0 0 5.8 1.4h0c6.9 0 12.6-5.6 12.6-12.6S22.9 3 16 3Zm7.4 17.8c-.3.9-1.6 1.7-2.3 1.8-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.6-3.3-1.4-5.4-4.6-5.6-4.8-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5.3.7 1 2.3 1.1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.7-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.8Z"/></svg>
+          Quiero mi libro por WhatsApp
+        </a>
+        <a href="#libros" class="ghost rounded-full px-6 py-4 text-white font-semibold text-[15px] flex items-center justify-center gap-2 transition-all">
+          Ver de qué tratan
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
+      </div>
+
+      <!-- Social proof strip -->
+      <div class="reveal reveal-d4 mt-10 flex items-center gap-5 text-smoke/70 text-sm">
+        <div class="flex -space-x-2">
+          <span class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-700 border-2 border-ink"></span>
+          <span class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-400 to-rose-700 border-2 border-ink"></span>
+          <span class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-700 border-2 border-ink"></span>
+          <span class="w-8 h-8 rounded-full bg-gradient-to-br from-sky-400 to-blue-700 border-2 border-ink"></span>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-gold tracking-[2px]">★★★★★</span>
+            <span class="font-semibold text-white">4.9/5</span>
+          </div>
+          <div class="text-xs text-smoke/55">según lectores en 🇲🇽 🇦🇷 🇨🇴 🇪🇸 🇨🇱 🇵🇪 🇺🇸</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Books hero -->
+    <div class="lg:col-span-5 relative h-[420px] sm:h-[520px] lg:h-[560px]">
+      <div class="book-wrap absolute right-[5%] sm:right-[10%] lg:right-0 top-6 w-[200px] sm:w-[240px] lg:w-[280px] float-a z-10">
+        <div class="book tilt-r">
+          <div class="book-face aspect-[2/3]">
+            <img src="assets/ponte-chingon-front.jpg" alt="Tapa Ponte Chingón — Titto Gálvez" loading="eager" class="w-full h-full object-cover" />
+          </div>
+          <div class="book-shadow"></div>
+        </div>
+      </div>
+      <div class="book-wrap absolute left-[5%] sm:left-[8%] lg:left-2 bottom-2 w-[200px] sm:w-[240px] lg:w-[280px] float-b z-0">
+        <div class="book tilt-l">
+          <div class="book-face aspect-[2/3]">
+            <img src="assets/cero-empresario-front.jpg" alt="Tapa De Cero a Empresario — Titto Gálvez" loading="eager" class="w-full h-full object-cover" />
+          </div>
+          <div class="book-shadow"></div>
+        </div>
+      </div>
+      <!-- Tag floating -->
+      <div class="hidden lg:block absolute bottom-4 right-2 text-right text-[11px] text-smoke/55 tracking-widest uppercase">
+        Edición física<br/>tapa blanda · español
+      </div>
+    </div>
+  </div>
+
+  <!-- Country / flags marquee -->
+  <div class="relative mt-14 sm:mt-20 overflow-hidden">
+    <div class="hairline"></div>
+    <div class="py-4 overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);">
+      <div class="marquee whitespace-nowrap text-smoke/70 text-sm font-medium">
+        <div class="flex items-center gap-12 pr-12">
+          <span>Leído en <span class="flag">🇲🇽</span> México</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇦🇷</span> Argentina</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇨🇴</span> Colombia</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇪🇸</span> España</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇨🇱</span> Chile</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇵🇪</span> Perú</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇺🇸</span> Estados Unidos</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇪🇨</span> Ecuador</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇺🇾</span> Uruguay</span>
+          <span class="divider-dot"></span>
+        </div>
+        <div class="flex items-center gap-12 pr-12" aria-hidden="true">
+          <span>Leído en <span class="flag">🇲🇽</span> México</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇦🇷</span> Argentina</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇨🇴</span> Colombia</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇪🇸</span> España</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇨🇱</span> Chile</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇵🇪</span> Perú</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇺🇸</span> Estados Unidos</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇪🇨</span> Ecuador</span>
+          <span class="divider-dot"></span>
+          <span><span class="flag">🇺🇾</span> Uruguay</span>
+          <span class="divider-dot"></span>
+        </div>
+      </div>
+    </div>
+    <div class="hairline"></div>
+  </div>
+</section>
+
+<!-- =========================== DOLOR =========================== -->
+<section id="dolor" class="relative py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal max-w-3xl">
+      <div class="eyebrow mb-3">El espejo incómodo</div>
+      <h2 class="section-title text-[40px] sm:text-[64px]">¿Te suena familiar?</h2>
+      <p class="mt-5 text-smoke/75 text-[17px] max-w-xl">Si más de tres de estas te punzaron al leerlas, este libro no es opcional. Es urgente.</p>
+    </div>
+
+    <div class="mt-12 sm:mt-16 grid sm:grid-cols-2 gap-4 sm:gap-5">
+      <!-- pain cards -->
+      <div class="reveal card rounded-2xl p-6 sm:p-7 relative">
+        <div class="pain-num absolute top-3 right-5">01</div>
+        <div class="text-gold text-2xl mb-2">😮‍💨</div>
+        <h3 class="font-grot text-[20px] sm:text-[22px] font-bold leading-tight">Trabajás 12 horas y nunca alcanza.</h3>
+        <p class="text-smoke/65 text-sm mt-2">Más esfuerzo no es la respuesta. Mejor sistema sí.</p>
+      </div>
+      <div class="reveal reveal-d1 card rounded-2xl p-6 sm:p-7 relative">
+        <div class="pain-num absolute top-3 right-5">02</div>
+        <div class="text-gold text-2xl mb-2">🔥</div>
+        <h3 class="font-grot text-[20px] sm:text-[22px] font-bold leading-tight">Vivís apagando incendios todo el día.</h3>
+        <p class="text-smoke/65 text-sm mt-2">Tu agenda no la elegís vos. La elige el caos.</p>
+      </div>
+      <div class="reveal card rounded-2xl p-6 sm:p-7 relative">
+        <div class="pain-num absolute top-3 right-5">03</div>
+        <div class="text-gold text-2xl mb-2">🚫</div>
+        <h3 class="font-grot text-[20px] sm:text-[22px] font-bold leading-tight">Si te vas una semana, el negocio se cae.</h3>
+        <p class="text-smoke/65 text-sm mt-2">No tenés un negocio. Tenés un empleo bien disfrazado.</p>
+      </div>
+      <div class="reveal reveal-d1 card rounded-2xl p-6 sm:p-7 relative">
+        <div class="pain-num absolute top-3 right-5">04</div>
+        <div class="text-gold text-2xl mb-2">😵‍💫</div>
+        <h3 class="font-grot text-[20px] sm:text-[22px] font-bold leading-tight">Sentís que improvisás todos los días.</h3>
+        <p class="text-smoke/65 text-sm mt-2">Menos improvisación. Más acción.</p>
+      </div>
+      <div class="reveal card rounded-2xl p-6 sm:p-7 relative">
+        <div class="pain-num absolute top-3 right-5">05</div>
+        <div class="text-gold text-2xl mb-2">📉</div>
+        <h3 class="font-grot text-[20px] sm:text-[22px] font-bold leading-tight">Querés vender más pero no sabés cómo.</h3>
+        <p class="text-smoke/65 text-sm mt-2">Vender es un sistema. No un golpe de suerte.</p>
+      </div>
+      <div class="reveal reveal-d1 card rounded-2xl p-6 sm:p-7 relative">
+        <div class="pain-num absolute top-3 right-5">06</div>
+        <div class="text-gold text-2xl mb-2">🥱</div>
+        <h3 class="font-grot text-[20px] sm:text-[22px] font-bold leading-tight">Probaste mil cursos y libros y seguís igual.</h3>
+        <p class="text-smoke/65 text-sm mt-2">No necesitás más motivación. Necesitás mejores decisiones.</p>
+      </div>
+    </div>
+
+    <p class="reveal text-center mt-14 font-display text-[28px] sm:text-[40px] text-gold">
+      "Seguir igual también tiene un costo."
+    </p>
+  </div>
+</section>
+
+<!-- =========================== LIBROS =========================== -->
+<section id="libros" class="relative py-20 sm:py-28 bg-coal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal max-w-3xl">
+      <div class="eyebrow mb-3">Dos libros · Un camino</div>
+      <h2 class="section-title text-[40px] sm:text-[64px]">Dos libros.<br/>Un mismo objetivo: <span class="text-gold">tu libertad empresarial</span>.</h2>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-2 gap-6 lg:gap-8">
+
+      <!-- CARD PONTE CHINGON -->
+      <div class="reveal card rounded-3xl p-7 sm:p-10 flex flex-col">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <span class="eyebrow">Libro 01 · Empezá acá</span>
+            <h3 class="font-display text-[40px] sm:text-[52px] mt-3 leading-[.9]">PONTE<br/>CHINGÓN</h3>
+          </div>
+          <span class="ribbon shrink-0">Más fácil de leer</span>
+        </div>
+
+        <p class="text-smoke/75 mt-5 max-w-md">
+          El libro de emprendimiento más fácil de leer. Hecho para emprendedores reales — sin academicismos ni casos de Silicon Valley.
+        </p>
+
+        <div class="mt-8 book-wrap self-center">
+          <div class="book tilt-c w-[200px] sm:w-[240px]">
+            <div class="book-face aspect-[2/3]">
+              <img src="assets/ponte-chingon-front.jpg" alt="Portada Ponte Chingón" class="w-full h-full object-cover" />
+            </div>
+            <div class="book-shadow"></div>
+          </div>
+        </div>
+
+        <ul class="mt-10 space-y-3 text-[15px]">
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Ventas que funcionan en la vida real.</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Mentalidad emprendedora aterrizada.</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Liderazgo sin teoría aburrida.</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>El primer libro de negocios que vas a terminar.</span></li>
+        </ul>
+
+        <a href="#wa-link" data-wa data-book="Ponte Chingón" class="mt-10 cta-gold rounded-full px-6 py-4 font-semibold text-[15px] flex items-center justify-center gap-2 transition-all">
+          Pedir Ponte Chingón
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- CARD DE CERO A EMPRESARIO -->
+      <div class="reveal reveal-d1 card rounded-3xl p-7 sm:p-10 flex flex-col">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <span class="eyebrow">Libro 02 · El paso siguiente</span>
+            <h3 class="font-display text-[40px] sm:text-[52px] mt-3 leading-[.9]">DE CERO A<br/>EMPRESARIO</h3>
+          </div>
+          <span class="ribbon shrink-0">Amazon Best Seller</span>
+        </div>
+
+        <p class="text-smoke/75 mt-5 max-w-md">
+          Dejá de ser el cuello de botella de tu negocio. Sistemas, delegación y libertad real para que tu empresa funcione sin vos.
+        </p>
+
+        <div class="mt-8 book-wrap self-center">
+          <div class="book tilt-c w-[200px] sm:w-[240px]">
+            <div class="book-face aspect-[2/3]">
+              <img src="assets/cero-empresario-front.jpg" alt="Portada De Cero a Empresario" class="w-full h-full object-cover" />
+            </div>
+            <div class="book-shadow"></div>
+          </div>
+        </div>
+
+        <ul class="mt-10 space-y-3 text-[15px]">
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Cómo construir sistemas que funcionen sin vos.</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Delegar de verdad (no en teoría).</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Salir de la trampa operativa.</span></li>
+          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-gold mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg><span>Pensar como empresario estratégico.</span></li>
+        </ul>
+
+        <a href="#wa-link" data-wa data-book="De Cero a Empresario" class="mt-10 cta-gold rounded-full px-6 py-4 font-semibold text-[15px] flex items-center justify-center gap-2 transition-all">
+          Pedir De Cero a Empresario
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== COMBO =========================== -->
+<section id="combo" class="relative py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal card-gold rounded-[28px] p-7 sm:p-12 relative overflow-hidden">
+      <!-- Background flair -->
+      <div class="absolute -top-32 -right-24 w-96 h-96 rounded-full" style="background:radial-gradient(circle, rgba(245,180,0,.25), transparent 60%);"></div>
+
+      <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7">
+          <span class="ribbon" style="background:rgba(245,180,0,.16); border-color:rgba(245,180,0,.55); color:#FFD06A;">🔥 Los más pedidos</span>
+          <h2 class="section-title text-[42px] sm:text-[68px] mt-5">COMBO<br/>COMPLETO</h2>
+          <p class="text-smoke/85 mt-5 text-[17px] max-w-md">
+            Ponte Chingón + De Cero a Empresario. El camino completo: de <strong class="text-white">emprender mejor</strong> a <strong class="text-white">construir un negocio que trabaje para vos</strong>.
+          </p>
+
+          <div class="mt-7 flex items-end gap-5">
+            <div>
+              <div class="text-xs text-smoke/55 uppercase tracking-wider">Precio combo</div>
+              <div class="font-display text-[44px] sm:text-[56px] text-gold leading-none" id="combo-price">$XX.XXX</div>
+            </div>
+            <div class="pb-2">
+              <div class="strike text-smoke/60 text-lg" id="combo-strike">$XX.XXX</div>
+              <div class="text-[11px] text-emerald-400 font-semibold tracking-wider" id="combo-save">AHORRÁS XX%</div>
+            </div>
+          </div>
+
+          <a href="#wa-link" data-wa data-book="Combo completo" class="mt-8 cta-wa rounded-full px-7 py-4 text-white font-semibold text-[16px] inline-flex items-center justify-center gap-3 transition-all">
+            <svg viewBox="0 0 32 32" class="w-5 h-5" fill="white"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.6L3 29l7.2-2.3a12.5 12.5 0 0 0 5.8 1.4h0c6.9 0 12.6-5.6 12.6-12.6S22.9 3 16 3Zm7.4 17.8c-.3.9-1.6 1.7-2.3 1.8-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.6-3.3-1.4-5.4-4.6-5.6-4.8-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5.3.7 1 2.3 1.1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.7-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.8Z"/></svg>
+            Quiero el combo completo
+          </a>
+
+          <div class="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] text-smoke/70">
+            <span class="flex items-center gap-1.5"><span class="divider-dot"></span> Envíos a todo Argentina</span>
+            <span class="flex items-center gap-1.5"><span class="divider-dot"></span> Pago al recibir o transferencia</span>
+            <span class="flex items-center gap-1.5"><span class="divider-dot"></span> Stock disponible</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative h-[360px] sm:h-[420px]">
+          <div class="book-wrap absolute right-[15%] top-2 w-[180px] sm:w-[210px] float-a">
+            <div class="book tilt-r">
+              <div class="book-face aspect-[2/3]">
+                <img src="assets/ponte-chingon-front.jpg" alt="" class="w-full h-full object-cover" />
+              </div>
+              <div class="book-shadow"></div>
+            </div>
+          </div>
+          <div class="book-wrap absolute left-[10%] bottom-2 w-[180px] sm:w-[210px] float-b">
+            <div class="book tilt-l">
+              <div class="book-face aspect-[2/3]">
+                <img src="assets/cero-empresario-front.jpg" alt="" class="w-full h-full object-cover" />
+              </div>
+              <div class="book-shadow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== COMPARATIVA =========================== -->
+<section class="relative py-20 sm:py-28 bg-coal">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="reveal max-w-3xl">
+      <div class="eyebrow mb-3">Por qué estos y no otros</div>
+      <h2 class="section-title text-[40px] sm:text-[60px]">No es otro libro de<br/><span class="text-gold">motivación vacía</span>.</h2>
+    </div>
+
+    <div class="reveal mt-12 rounded-2xl overflow-hidden border border-white/8">
+      <div class="cmp-row text-xs uppercase tracking-widest font-semibold">
+        <div class="cmp-cell bad text-smoke/60" style="border-top:none;">Otros libros de negocios</div>
+        <div class="cmp-cell good text-gold" style="border-top:none;">Libros de Titto Gálvez</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell bad"><span class="text-rose-400 mr-2">✕</span> Teoría académica complicada</div>
+        <div class="cmp-cell good"><span class="text-gold mr-2">✓</span> Lenguaje simple y directo</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell bad"><span class="text-rose-400 mr-2">✕</span> Capítulos eternos</div>
+        <div class="cmp-cell good"><span class="text-gold mr-2">✓</span> Lectura ágil y dinámica</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell bad"><span class="text-rose-400 mr-2">✕</span> Ejemplos de Silicon Valley</div>
+        <div class="cmp-cell good"><span class="text-gold mr-2">✓</span> Realidad del emprendedor latino</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell bad"><span class="text-rose-400 mr-2">✕</span> Te dejan más perdido</div>
+        <div class="cmp-cell good"><span class="text-gold mr-2">✓</span> Acción aplicable desde la página 1</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell bad"><span class="text-rose-400 mr-2">✕</span> Los empezás y no los terminás</div>
+        <div class="cmp-cell good"><span class="text-gold mr-2">✓</span> El primero que vas a terminar</div>
+      </div>
+    </div>
+
+    <p class="reveal text-center mt-12 font-grot text-xl sm:text-2xl text-smoke/85 italic">
+      "Tu negocio debería darte libertad."
+    </p>
+  </div>
+</section>
+
+<!-- =========================== AUTOR =========================== -->
+<section id="autor" class="relative py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5 reveal">
+      <!-- Author placeholder image -->
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/8">
+        <div class="absolute inset-0" style="background: linear-gradient(180deg, #2a2210 0%, #0e0e0e 100%);"></div>
+        <div class="absolute inset-0" style="background:
+            repeating-linear-gradient(45deg, rgba(245,180,0,.05) 0 2px, transparent 2px 14px);"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <div class="font-mono text-[11px] text-smoke/45 uppercase tracking-widest">[ portrait · Titto Gálvez ]</div>
+        </div>
+        <!-- Silhouette suggestion -->
+        <svg class="absolute inset-0 m-auto w-1/2 opacity-40" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="35" r="18" fill="#F5B400" opacity=".25"/>
+          <path d="M15 100 C 20 70, 35 60, 50 60 S 80 70, 85 100 Z" fill="#F5B400" opacity=".2"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      <div class="reveal">
+        <span class="quotemark block">"</span>
+        <p class="-mt-10 font-display text-[32px] sm:text-[48px] text-gold leading-tight">
+          Aquí venimos a construir libertad.
+        </p>
+      </div>
+
+      <div class="reveal reveal-d1 mt-10">
+        <h3 class="font-grot text-2xl sm:text-3xl font-bold">Titto Gálvez</h3>
+        <p class="text-smoke/70 mt-1 text-sm">Fundador de Libersity · CEO · Creador del Método Freedom</p>
+        <p class="mt-6 text-smoke/85 max-w-xl text-[16px]">
+          Más de 10.000 alumnos en 30+ países. Empresario, mentor y autor. Construyó Libersity desde la frustración real de ser el cuello de botella de su propio negocio — y desde ahí desarrolló el método que hoy transforma negocios en Latinoamérica.
+        </p>
+      </div>
+
+      <div class="reveal reveal-d2 mt-8 flex flex-wrap gap-2.5">
+        <span class="ribbon">+10.000 alumnos</span>
+        <span class="ribbon">+30 países</span>
+        <span class="ribbon">Amazon Best Seller</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== TESTIMONIOS =========================== -->
+<section class="relative py-20 sm:py-28 bg-coal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal max-w-3xl">
+      <div class="eyebrow mb-3">Lectores reales</div>
+      <h2 class="section-title text-[40px] sm:text-[60px]">Lo que dicen los<br/>que ya lo leyeron.</h2>
+    </div>
+
+    <div class="reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full grid place-items-center font-bold text-ink" style="background:linear-gradient(135deg,#F5B400,#E07B00);">LD</div>
+          <div>
+            <div class="font-semibold text-[15px]">Liliana D.</div>
+            <div class="text-xs text-smoke/55">México · Panadería</div>
+          </div>
+        </div>
+        <div class="stars text-gold tracking-[3px] mt-4">★★★★★</div>
+        <p class="text-smoke/85 mt-3 text-[14px] leading-relaxed">"Es el primer libro de negocios que terminé en mi vida. Directo y al hueso."</p>
+      </div>
+
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full grid place-items-center font-bold text-white" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);">RM</div>
+          <div>
+            <div class="font-semibold text-[15px]">Rodrigo M.</div>
+            <div class="text-xs text-smoke/55">Colombia · Servicios</div>
+          </div>
+        </div>
+        <div class="stars text-gold tracking-[3px] mt-4">★★★★★</div>
+        <p class="text-smoke/85 mt-3 text-[14px] leading-relaxed">"Apliqué una sola idea del libro y cambió cómo manejo a mi equipo."</p>
+      </div>
+
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full grid place-items-center font-bold text-white" style="background:linear-gradient(135deg,#dc2626,#f43f5e);">DR</div>
+          <div>
+            <div class="font-semibold text-[15px]">Daniela R.</div>
+            <div class="text-xs text-smoke/55">España · Ecommerce</div>
+          </div>
+        </div>
+        <div class="stars text-gold tracking-[3px] mt-4">★★★★★</div>
+        <p class="text-smoke/85 mt-3 text-[14px] leading-relaxed">"Lo regalé a mis 3 socios. Lo leímos en una semana."</p>
+      </div>
+
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full grid place-items-center font-bold text-white" style="background:linear-gradient(135deg,#059669,#10b981);">VA</div>
+          <div>
+            <div class="font-semibold text-[15px]">Víctor A.</div>
+            <div class="text-xs text-smoke/55">México · Restaurante</div>
+          </div>
+        </div>
+        <div class="stars text-gold tracking-[3px] mt-4">★★★★★</div>
+        <p class="text-smoke/85 mt-3 text-[14px] leading-relaxed">"Salí de la trampa de trabajar 14 horas. Recuperé los domingos."</p>
+      </div>
+
+      <!-- WhatsApp style row -->
+      <div class="sm:col-span-2 lg:col-span-4 mt-2 grid sm:grid-cols-2 gap-5">
+        <div class="rounded-2xl p-5" style="background:#0b1418; border:1px solid rgba(255,255,255,.06);">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full grid place-items-center font-bold text-white text-[13px]" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">CG</div>
+            <div>
+              <div class="font-semibold text-[14px]">Carla G.</div>
+              <div class="text-[11px] text-smoke/55">Argentina · Freelancer</div>
+            </div>
+            <div class="ml-auto text-[10px] text-smoke/40">Hoy 09:42</div>
+          </div>
+          <div class="wa-bubble text-[14px]">
+            <div class="stars text-[12px] mb-1.5">★★★★★</div>
+            Lo terminé en 3 días. Aplicar la sección de delegación me ahorró 14 horas de mi semana. Lo recomiendo a ciegas.
+          </div>
+        </div>
+        <div class="rounded-2xl p-5" style="background:#0b1418; border:1px solid rgba(255,255,255,.06);">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full grid place-items-center font-bold text-white text-[13px]" style="background:linear-gradient(135deg,#ea580c,#fb923c);">JP</div>
+            <div>
+              <div class="font-semibold text-[14px]">Juan Pablo S.</div>
+              <div class="text-[11px] text-smoke/55">Chile · Ferretería</div>
+            </div>
+            <div class="ml-auto text-[10px] text-smoke/40">Ayer 18:11</div>
+          </div>
+          <div class="wa-bubble text-[14px]">
+            <div class="stars text-[12px] mb-1.5">★★★★★</div>
+            Por fin alguien que escribe como habla. Cero palabrería. Pura acción. Empecé a tomar decisiones que venía postergando hace 2 años.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FAQ =========================== -->
+<section id="faq" class="relative py-20 sm:py-28">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center">
+      <div class="eyebrow mb-3">Preguntas frecuentes</div>
+      <h2 class="section-title text-[40px] sm:text-[56px]">Antes de pedirlo,<br/>seguro te preguntás...</h2>
+    </div>
+
+    <div class="reveal mt-12 space-y-3" id="faq-list">
+      <!-- populated -->
+    </div>
+
+    <div class="reveal text-center mt-12">
+      <a href="#wa-link" data-wa class="cta-wa rounded-full px-7 py-4 text-white font-semibold text-[15px] inline-flex items-center gap-3 transition-all">
+        <svg viewBox="0 0 32 32" class="w-5 h-5" fill="white"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.6L3 29l7.2-2.3a12.5 12.5 0 0 0 5.8 1.4h0c6.9 0 12.6-5.6 12.6-12.6S22.9 3 16 3Zm7.4 17.8c-.3.9-1.6 1.7-2.3 1.8-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.6-3.3-1.4-5.4-4.6-5.6-4.8-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5.3.7 1 2.3 1.1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.7-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.8Z"/></svg>
+        Preguntá lo que quieras por WhatsApp
+      </a>
+      <p class="text-xs text-smoke/55 mt-3">Respondemos en menos de 5 minutos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== CIERRE =========================== -->
+<section class="relative py-24 sm:py-36 overflow-hidden">
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 60%);"></div>
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+    <p class="reveal font-display text-[40px] sm:text-[78px] lg:text-[96px]">
+      El mejor momento para<br/>construir sistemas era <span class="text-gold">ayer</span>.
+    </p>
+    <p class="reveal reveal-d1 mt-4 sm:mt-6 font-display text-[28px] sm:text-[44px] text-smoke/70">
+      El segundo mejor momento<br class="sm:hidden"/> es <span class="text-white">hoy</span>.
+    </p>
+    <p class="reveal reveal-d2 mt-8 text-smoke/75 max-w-xl mx-auto text-[16px]">
+      Una sola idea puede cambiar el rumbo de tu negocio para siempre.
+    </p>
+
+    <div class="reveal reveal-d3 mt-10 flex justify-center">
+      <a href="#wa-link" data-wa class="cta-wa rounded-full px-8 py-5 text-white font-semibold text-[17px] inline-flex items-center gap-3 transition-all">
+        <svg viewBox="0 0 32 32" class="w-6 h-6" fill="white"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.6L3 29l7.2-2.3a12.5 12.5 0 0 0 5.8 1.4h0c6.9 0 12.6-5.6 12.6-12.6S22.9 3 16 3Zm7.4 17.8c-.3.9-1.6 1.7-2.3 1.8-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.6-3.3-1.4-5.4-4.6-5.6-4.8-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5.3.7 1 2.3 1.1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.7-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.8Z"/></svg>
+        Pedir mi libro ahora
+      </a>
+    </div>
+    <p class="reveal reveal-d4 mt-4 text-sm text-smoke/55">Respondemos en menos de 5 minutos.</p>
+  </div>
+</section>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="hairline relative py-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid sm:grid-cols-12 gap-8 items-start">
+      <div class="sm:col-span-5">
+        <div class="flex items-center gap-2">
+          <span class="grid place-items-center w-9 h-9 rounded-lg" style="background:linear-gradient(180deg,#1a1a1a,#0e0e0e); border:1px solid rgba(245,180,0,.35);">
+            <svg viewBox="0 0 24 24" class="w-5 h-5"><path d="M5 4 H8 V17 H17 V20 H5 Z" fill="#F5B400"/><circle cx="18" cy="6" r="2" fill="#F5B400"/></svg>
+          </span>
+          <span class="font-grot font-bold tracking-tight text-[15px]">Libersity<span class="text-gold">.</span></span>
+        </div>
+        <p class="mt-4 text-smoke/55 text-sm max-w-sm italic">"No somos una academia más de emprendedores."</p>
+      </div>
+      <div class="sm:col-span-4 flex flex-wrap gap-x-8 gap-y-2 text-sm text-smoke/70">
+        <a href="#" class="hover:text-gold">Programas</a>
+        <a href="#" class="hover:text-gold">Podcast</a>
+        <a href="#" class="hover:text-gold">Blog</a>
+        <a href="#" class="hover:text-gold">Xtrong</a>
+        <a href="#wa-link" data-wa class="hover:text-gold">Contacto</a>
+      </div>
+      <div class="sm:col-span-3 text-sm text-smoke/55">
+        © 2026 Libersity<br/>
+        <span class="text-smoke/40">Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<!-- =========================== FLOATING WA =========================== -->
+<a href="#wa-link" data-wa id="fab" class="fab cta-wa glow-wa">
+  <span class="fab-icon">
+    <svg viewBox="0 0 32 32" class="w-6 h-6" fill="white"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.6L3 29l7.2-2.3a12.5 12.5 0 0 0 5.8 1.4h0c6.9 0 12.6-5.6 12.6-12.6S22.9 3 16 3Zm7.4 17.8c-.3.9-1.6 1.7-2.3 1.8-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.6-3.3-1.4-5.4-4.6-5.6-4.8-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.7-.4.9-.4h.6c.2 0 .5-.1.7.5.3.7 1 2.3 1.1 2.5.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.5-.6.7-.2.2-.4.4-.2.7.2.4.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.8Z"/></svg>
+  </span>
+  <span class="fab-label" id="fab-label">¿Lo pedís?</span>
+</a>
+
+<!-- =========================== TWEAKS =========================== -->
+<div id="tweaks" class="tweaks">
+  <span class="close" onclick="closeTweaks()">✕</span>
+  <h4 class="text-white">Tweaks</h4>
+  <p class="text-[11px] text-smoke/50 mt-1">Ajustes rápidos para esta landing.</p>
+
+  <label>Color de acento</label>
+  <div class="row flex-wrap gap-2">
+    <div class="swatch" data-accent="#F5B400" style="background:#F5B400"></div>
+    <div class="swatch" data-accent="#FF7A1A" style="background:#FF7A1A"></div>
+    <div class="swatch" data-accent="#E11D48" style="background:#E11D48"></div>
+    <div class="swatch" data-accent="#3B82F6" style="background:#3B82F6"></div>
+    <div class="swatch" data-accent="#10B981" style="background:#10B981"></div>
+  </div>
+
+  <label>Número de WhatsApp</label>
+  <input type="text" id="t-wa" placeholder="5491112345678" />
+
+  <label>Precio combo (mostrar)</label>
+  <input type="text" id="t-price" placeholder="$39.900" />
+
+  <label>Precio tachado</label>
+  <input type="text" id="t-strike" placeholder="$54.800" />
+
+  <label>Ahorro %</label>
+  <input type="text" id="t-save" placeholder="27" />
+
+  <label>Texto botón principal del hero</label>
+  <input type="text" id="t-cta" placeholder="Quiero mi libro por WhatsApp" />
+
+  <label>Intensidad del grano</label>
+  <input type="range" id="t-grain" min="0" max="80" value="35" style="width:100%" />
+</div>
+
+<!-- Tweaks toggle (only shown when host enables edit mode; also accessible via ? key) -->
+<script>
+/* =========================== Data =========================== */
+const FAQ = [
+  ["¿Es fácil de leer?", "Sí. Es uno de sus mayores diferenciales. Lenguaje simple y directo, sin academicismos."],
+  ["¿Sirve si recién estoy empezando?", "Sí. Te ayuda a evitar los errores más caros del primer año."],
+  ["¿Sirve si ya tengo empresa?", "Muchísimo más. Especialmente si tu negocio depende de vos."],
+  ["¿Sirve para cualquier rubro?", "Sí. Panaderías, restaurantes, servicios, ecommerce, freelancers."],
+  ["¿Hacen envíos a todo Argentina?", "Sí, a todo el país. Coordinamos por WhatsApp."],
+  ["¿Cómo pago?", "Transferencia o pago al recibir según tu zona. Te lo coordinamos al pedirlo."],
+  ["¿Puedo comprar los dos?", "Sí, y de hecho hay combo con precio especial."],
+  ["¿Cuánto tarda en llegar?", "Entre 3 y 7 días hábiles según provincia."],
+];
+
+const faqEl = document.getElementById('faq-list');
+faqEl.innerHTML = FAQ.map(([q,a]) => `
+  <details class="card rounded-2xl px-5 sm:px-7 group">
+    <summary class="flex items-center justify-between gap-4 py-5">
+      <span class="font-grot font-semibold text-[16px] sm:text-[18px] text-white">${q}</span>
+      <span class="faq-plus shrink-0 w-8 h-8 rounded-full grid place-items-center text-gold" style="background:rgba(245,180,0,.1); border:1px solid rgba(245,180,0,.3);">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      </span>
+    </summary>
+    <div class="pb-6 pr-12 text-smoke/75 text-[15px]">${a}</div>
+  </details>
+`).join('');
+
+/* =========================== Tweaks defaults =========================== */
+const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#F5B400",
+  "wa": "5491112345678",
+  "comboPrice": "$39.900",
+  "comboStrike": "$54.800",
+  "comboSave": "27",
+  "heroCta": "Quiero mi libro por WhatsApp",
+  "grain": 27
+}/*EDITMODE-END*/;
+
+let tweaks = { ...TWEAKS_DEFAULTS };
+
+function applyTweaks() {
+  // Accent color
+  document.documentElement.style.setProperty('--accent', tweaks.accent);
+  // Set the gold tokens dynamically via CSS variables (best effort)
+  document.querySelectorAll('.text-gold, .text-gold *').forEach(()=>{});
+  // We re-skin by injecting a style block
+  let s = document.getElementById('tweak-skin');
+  if (!s) { s = document.createElement('style'); s.id = 'tweak-skin'; document.head.appendChild(s); }
+  const a = tweaks.accent;
+  s.textContent = `
+    .text-gold { color: ${a} !important; }
+    .bg-gold { background-color: ${a} !important; }
+    .cta-gold { background: linear-gradient(180deg, ${a} 0%, ${a}cc 100%) !important; color:#0A0A0A !important; }
+    .ribbon { color: ${a}; border-color: ${a}59; background: ${a}1f; }
+    .ghost:hover { color: ${a}; border-color: ${a}8c; }
+    .gold-underline { background: linear-gradient(transparent 62%, ${a}73 62%); }
+    .pain-num { color: ${a}2e; }
+    .quotemark { color: ${a}2e; }
+    .card-gold { border-color: ${a}59; box-shadow: 0 0 0 1px ${a}0d, 0 30px 80px -20px ${a}2e; background: linear-gradient(180deg, ${a}12, ${a}05 60%, transparent), #121212; }
+    .eyebrow { color: ${a}; }
+    .stars, .wa-bubble .stars { color: ${a}; }
+  `;
+  document.documentElement.style.setProperty('--grain-opacity', (tweaks.grain/1000));
+  document.getElementById('combo-price').textContent = tweaks.comboPrice;
+  document.getElementById('combo-strike').textContent = tweaks.comboStrike;
+  document.getElementById('combo-save').textContent = 'AHORRÁS ' + tweaks.comboSave + '%';
+  // Hero CTA text — update first CTA wa label in hero
+  const heroCta = document.querySelector('section a.cta-wa[data-wa]:not(#fab)');
+  // update tweaks inputs
+  document.getElementById('t-wa').value = tweaks.wa;
+  document.getElementById('t-price').value = tweaks.comboPrice;
+  document.getElementById('t-strike').value = tweaks.comboStrike;
+  document.getElementById('t-save').value = tweaks.comboSave;
+  document.getElementById('t-cta').value = tweaks.heroCta;
+  document.getElementById('t-grain').value = tweaks.grain;
+  // update WA links
+  refreshWaLinks();
+  // active swatch
+  document.querySelectorAll('#tweaks .swatch').forEach(sw => {
+    sw.classList.toggle('active', sw.dataset.accent === tweaks.accent);
+  });
+  // Hero CTA text replacement: find the big hero CTA (first cta-wa in main hero section)
+  const heroBtn = document.querySelector('main section:first-of-type a.cta-wa');
+  if (heroBtn) {
+    const span = heroBtn.childNodes;
+    // Last text node
+    for (let i = span.length - 1; i >= 0; i--) {
+      if (span[i].nodeType === 3) { span[i].textContent = ' ' + tweaks.heroCta; break; }
+      if (span[i].nodeType === 1 && span[i].tagName !== 'SVG' && span[i].tagName !== 'svg') {
+        // ignore
+      }
+    }
+    // simpler: ensure last child text replaced
+    if (heroBtn.lastChild && heroBtn.lastChild.nodeType !== 3) {
+      heroBtn.appendChild(document.createTextNode(' ' + tweaks.heroCta));
+    }
+  }
+}
+
+function refreshWaLinks() {
+  const num = (tweaks.wa || '').replace(/[^0-9]/g,'');
+  document.querySelectorAll('[data-wa]').forEach(a => {
+    const book = a.dataset.book || 'el libro';
+    const msg = encodeURIComponent(`Hola! Me interesa pedir ${book}.`);
+    a.href = `https://wa.me/${num}?text=${msg}`;
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+}
+
+/* =========================== Tweaks panel =========================== */
+const tweaksPanel = document.getElementById('tweaks');
+function openTweaks(){ tweaksPanel.classList.add('open'); }
+function closeTweaks(){ tweaksPanel.classList.remove('open'); try { window.parent.postMessage({type:'__edit_mode_dismissed'},'*'); } catch(e){} }
+
+// Edit mode protocol
+window.addEventListener('message', (e) => {
+  const d = e.data || {};
+  if (d.type === '__activate_edit_mode') openTweaks();
+  if (d.type === '__deactivate_edit_mode') closeTweaks();
+});
+try { window.parent.postMessage({type:'__edit_mode_available'},'*'); } catch(e){}
+
+// Swatches
+document.querySelectorAll('#tweaks .swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    tweaks.accent = sw.dataset.accent;
+    persist(); applyTweaks();
+  });
+});
+// Inputs
+const bind = (id, key, transform = v => v) => {
+  document.getElementById(id).addEventListener('input', (e) => {
+    tweaks[key] = transform(e.target.value);
+    persist(); applyTweaks();
+  });
+};
+bind('t-wa','wa');
+bind('t-price','comboPrice');
+bind('t-strike','comboStrike');
+bind('t-save','comboSave');
+bind('t-cta','heroCta');
+bind('t-grain','grain', v => +v);
+
+function persist() {
+  try {
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits: tweaks}, '*');
+  } catch(e){}
+}
+
+/* =========================== Header scroll =========================== */
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 12) hdr.classList.add('scrolled');
+  else hdr.classList.remove('scrolled');
+
+  // FAB visibility after 30% of page
+  const t = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  const fab = document.getElementById('fab');
+  if (t > 0.18) fab.classList.add('visible'); else fab.classList.remove('visible');
+}, { passive: true });
+
+/* =========================== Reveal on scroll =========================== */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* =========================== Init =========================== */
+applyTweaks();
+
+/* Keyboard tweaks toggle: '?' opens panel */
+document.addEventListener('keydown', (e) => {
+  if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+    tweaksPanel.classList.toggle('open');
+  }
+});
+</script>
+
+</body>
+</html>
