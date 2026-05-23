@@ -1,9 +1,6 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "routes": [
-    { "src": "/bot", "dest": "/whatsapp-simulator.html" },
-    { "src": "/landing", "dest": "/index.html" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "rewrites": [
+    { "source": "/bot", "destination": "/whatsapp-simulator.html" },
+    { "source": "/landing", "destination": "/index.html" }
   ]
 }
