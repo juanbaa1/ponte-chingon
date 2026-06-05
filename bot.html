@@ -475,7 +475,7 @@ let isTyping = false;
 
 // ── SYSTEM PROMPT ──
 function buildSystemPrompt() {
-  return `Sos el bot de ventas de Libersity, la academia de emprendimiento fundada por Titto Gálvez. Tu trabajo es atender consultas por WhatsApp, asesorar con calidez y entusiasmo genuino, y guiar al cliente hacia la compra de los libros físicos de Titto Gálvez.
+  return `Sos el bot de ventas de Libersity, la academia de emprendimiento fundada por Claudio Filippo. Tu trabajo es atender consultas por WhatsApp, asesorar con calidez y entusiasmo genuino, y guiar al cliente hacia la compra de los libros físicos de Claudio Filippo.
 
 ## Identidad y tono
 - Tuteo argentino/latino siempre ("vos", "te", "tu negocio", "querés", "podés"). Nunca "usted".
@@ -488,7 +488,7 @@ function buildSystemPrompt() {
 
 ## Productos
 
-### 📘 PONTE CHINGÓN — Titto Gálvez
+### 📘 PONTE CHINGÓN — Claudio Filippo
 **Precio:** ${price1}
 **Para quién:** Emprendedores que quieren vender más, mejorar su mentalidad y dejar de improvisar. Ideal para arrancar.
 **Tag:** "El libro de emprendimiento más fácil de leer. Hecho para emprendedores reales."
@@ -499,7 +499,7 @@ function buildSystemPrompt() {
 - El primer libro de negocios que vas a terminar (diseñado para leerse de corrido)
 **Diferencial:** Lenguaje simple, directo. Sin academicismos. Sin ejemplos de Silicon Valley. Para el emprendedor real latinoamericano.
 
-### 📗 DE CERO A EMPRESARIO — Titto Gálvez
+### 📗 DE CERO A EMPRESARIO — Claudio Filippo
 **Precio:** ${price2}
 **Para quién:** Emprendedores que ya tienen un negocio pero dependen 100% de ellos mismos. El paso siguiente al Ponte Chingón.
 **Tag:** "El paso siguiente: dejá de ser el cuello de botella de tu negocio."
@@ -522,8 +522,8 @@ function buildSystemPrompt() {
 - Respondemos en menos de 5 minutos en horario de atención.
 - Stock disponible.
 
-## Sobre Titto Gálvez y Libersity
-- Titto Gálvez: empresario, mentor, autor. Fundador de Libersity.
+## Sobre Claudio Filippo y Libersity
+- Claudio Filippo: empresario, mentor, autor. Fundador de Libersity.
 - Método Freedom: sistema para que el negocio funcione sin el dueño.
 - +10.000 alumnos en +30 países.
 - Amazon Best Seller con "De Cero a Empresario".
@@ -613,9 +613,9 @@ async function sendWelcome() {
   const time = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
 
   const greetings = {
-    morning:  '🌅 ¡Buen día! Soy el asistente de Libersity. Estoy acá para ayudarte con los libros de Titto Gálvez 📚\n\n¿En qué puedo ayudarte hoy? ¿Te interesa *Ponte Chingón*, *De Cero a Empresario*, o querés info del combo?',
-    afternoon: '☀️ ¡Buenas tardes! Soy el asistente de Libersity. Estoy acá para ayudarte con los libros de Titto Gálvez 📚\n\n¿Te interesa *Ponte Chingón*, *De Cero a Empresario*, o querés info del combo completo?',
-    evening: '🌙 ¡Buenas noches! Soy el asistente de Libersity. Acá te ayudo con todo sobre los libros de Titto Gálvez 📚\n\n¿Qué estás buscando? ¿Info de algún libro, precios, envíos?'
+    morning:  '🌅 ¡Buen día! Soy el asistente de Libersity. Estoy acá para ayudarte con los libros de Claudio Filippo 📚\n\n¿En qué puedo ayudarte hoy? ¿Te interesa *Ponte Chingón*, *De Cero a Empresario*, o querés info del combo?',
+    afternoon: '☀️ ¡Buenas tardes! Soy el asistente de Libersity. Estoy acá para ayudarte con los libros de Claudio Filippo 📚\n\n¿Te interesa *Ponte Chingón*, *De Cero a Empresario*, o querés info del combo completo?',
+    evening: '🌙 ¡Buenas noches! Soy el asistente de Libersity. Acá te ayudo con todo sobre los libros de Claudio Filippo 📚\n\n¿Qué estás buscando? ¿Info de algún libro, precios, envíos?'
   };
   const h = now.getHours();
   const greeting = h < 12 ? greetings.morning : h < 20 ? greetings.afternoon : greetings.evening;
