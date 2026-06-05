@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Presupuesto — Landing + Bot WhatsApp · Libersity</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f5f4; }
+  body { padding: 32px 16px; }
+
+  .page {
+    max-width: 760px; margin: 0 auto; background: #fff;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,.09);
+  }
+
+  /* HEADER */
+  .header {
+    background: #0A0A0A; color: #fff;
+    padding: 36px 40px 28px;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+  }
+  .header-brand { display: flex; flex-direction: column; gap: 4px; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -.3px; }
+  .brand-sub { font-size: 12px; color: #888; letter-spacing: .06em; text-transform: uppercase; }
+  .header-meta { text-align: right; }
+  .presupuesto-num { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+  .presupuesto-val { font-size: 20px; font-weight: 700; color: #F5B400; }
+  .presupuesto-date { font-size: 12px; color: #666; margin-top: 6px; }
+
+  /* GOLD BAR */
+  .gold-bar { height: 4px; background: linear-gradient(90deg, #F5B400, #FFC633, #F5B400); }
+
+  /* BODY */
+  .body { padding: 36px 40px; }
+
+  /* CLIENT BLOCK */
+  .client-block {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    padding: 20px; background: #fafaf9; border-radius: 8px;
+    border: 1px solid #e5e5e3; margin-bottom: 32px;
+  }
+  .client-col { display: flex; flex-direction: column; gap: 3px; }
+  .client-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #888; }
+  .client-val { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .client-sub { font-size: 13px; color: #555; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .1em; color: #F5B400; margin-bottom: 12px; margin-top: 28px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #f0ede8; }
+
+  /* TABLE */
+  .budget-table { width: 100%; border-collapse: collapse; }
+  .budget-table thead tr { border-bottom: 2px solid #f0ede8; }
+  .budget-table th {
+    padding: 8px 12px; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em; color: #888;
+    text-align: left;
+  }
+  .budget-table th:last-child { text-align: right; }
+  .budget-table td { padding: 13px 12px; border-bottom: 1px solid #f5f5f4; vertical-align: top; }
+  .budget-table td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+  .budget-table tbody tr:last-child td { border-bottom: none; }
+  .budget-table tbody tr:hover td { background: #fafaf9; }
+
+  .item-name { font-weight: 600; color: #1a1a1a; margin-bottom: 3px; font-size: 14px; }
+  .item-desc { font-size: 12px; color: #777; line-height: 1.5; }
+
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
+    padding: 2px 7px; border-radius: 4px; margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-dev { background: #f0f0ff; color: #5b5bd6; }
+  .badge-infra { background: #f0faf5; color: #1a7a50; }
+  .badge-anual { background: #fff8e6; color: #a07000; }
+
+  /* TOTALS */
+  .totals-block {
+    margin-top: 8px; border-top: 2px solid #1a1a1a;
+    padding-top: 16px; display: flex; flex-direction: column; gap: 8px;
+    align-items: flex-end;
+  }
+  .total-row { display: flex; gap: 48px; align-items: baseline; }
+  .total-label { font-size: 13px; color: #555; min-width: 200px; text-align: right; }
+  .total-val { font-size: 14px; font-weight: 600; min-width: 120px; text-align: right; color: #1a1a1a; }
+  .total-row.grand .total-label { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+  .total-row.grand .total-val { font-size: 20px; font-weight: 700; color: #0A0A0A; }
+  .total-row.iva .total-val { color: #888; font-size: 13px; }
+
+  /* NOTES */
+  .notes {
+    margin-top: 28px; padding: 16px 20px;
+    background: #fafaf9; border: 1px solid #e5e5e3; border-radius: 8px;
+  }
+  .notes-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #888; margin-bottom: 10px; }
+  .notes ul { padding-left: 16px; display: flex; flex-direction: column; gap: 5px; }
+  .notes li { font-size: 13px; color: #555; line-height: 1.5; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 32px; padding: 20px 40px;
+    background: #0A0A0A; color: #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; gap: 16px;
+  }
+  .footer-brand { font-weight: 600; color: #F5B400; }
+  .footer-copy { color: #555; }
+  .footer-validity { color: #888; text-align: right; }
+
+  /* PRINT */
+  @media print {
+    html { background: #fff; }
+    body { padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .gold-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 600px) {
+    .header { flex-direction: column; gap: 16px; padding: 24px 20px 20px; }
+    .header-meta { text-align: left; }
+    .body { padding: 24px 20px; }
+    .client-block { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; text-align: center; padding: 20px; }
+    .footer-validity { text-align: center; }
+    .total-row { gap: 24px; }
+    .total-label { min-width: 140px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">
+      <div class="brand-name">Libersity</div>
+      <div class="brand-sub">Desarrollo Digital · Titto Gálvez</div>
+    </div>
+    <div class="header-meta">
+      <div class="presupuesto-num">Presupuesto</div>
+      <div class="presupuesto-val">#2025-001</div>
+      <div class="presupuesto-date" id="fechaDoc"></div>
+    </div>
+  </div>
+  <div class="gold-bar"></div>
+
+  <div class="body">
+
+    <!-- CLIENT -->
+    <div class="client-block">
+      <div class="client-col">
+        <span class="client-label">Cliente</span>
+        <span class="client-val">Libersity / Titto Gálvez</span>
+        <span class="client-sub">centermueblesvictorica@gmail.com</span>
+      </div>
+      <div class="client-col">
+        <span class="client-label">Proyecto</span>
+        <span class="client-val">Landing + Bot WhatsApp</span>
+        <span class="client-sub">Ponte Chingón · De Cero a Empresario</span>
+      </div>
+    </div>
+
+    <!-- DESARROLLO -->
+    <div class="section-title">Desarrollo</div>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th style="width:55%">Ítem</th>
+          <th style="width:20%">Tipo</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="item-name">Landing page de ventas</div>
+            <div class="item-desc">Diseño mobile-first, 10 secciones, animaciones scroll, mockups 3D libros, CTAs WhatsApp, panel de tweaks en vivo.</div>
+          </td>
+          <td><span class="badge badge-dev">Único</span></td>
+          <td>$ 1.000.000</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item-name">Bot de ventas WhatsApp (simulador)</div>
+            <div class="item-desc">UI WhatsApp real, integración Claude API, system prompt completo con productos/precios/FAQs, tono argentino, panel de configuración.</div>
+          </td>
+          <td><span class="badge badge-dev">Único</span></td>
+          <td>$ 1.000.000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- INFRAESTRUCTURA -->
+    <div class="section-title">Infraestructura y servicios</div>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th style="width:55%">Ítem</th>
+          <th style="width:20%">Período</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="item-name">Dominio web</div>
+            <div class="item-desc">Registro y renovación anual del dominio.</div>
+          </td>
+          <td><span class="badge badge-anual">Anual</span></td>
+          <td>$ 16.900</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item-name">Servidor — 2 vCPU / 2 GB RAM</div>
+            <div class="item-desc">Hosting de la landing y el bot. Facturación mensual: $12.571/mes.</div>
+          </td>
+          <td><span class="badge badge-infra">Mensual</span></td>
+          <td>$ 12.571</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item-name">Servidor — 2 vCPU / 2 GB RAM</div>
+            <div class="item-desc">Equivalente anual (12 meses contratados por adelantado).</div>
+          </td>
+          <td><span class="badge badge-anual">Anual</span></td>
+          <td>$ 90.512</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TOTALES -->
+    <div class="totals-block">
+      <div class="total-row">
+        <span class="total-label">Desarrollo (pago único)</span>
+        <span class="total-val">$ 2.000.000</span>
+      </div>
+      <div class="total-row">
+        <span class="total-label">Dominio (anual)</span>
+        <span class="total-val">$ 16.900</span>
+      </div>
+      <div class="total-row">
+        <span class="total-label">Servidor (anual)</span>
+        <span class="total-val">$ 90.512</span>
+      </div>
+      <div class="total-row" style="margin-top:8px; padding-top:12px; border-top:1px solid #e5e5e3">
+        <span class="total-label" style="font-weight:600;color:#1a1a1a">Primer año completo (sin IVA)</span>
+        <span class="total-val" style="font-size:17px;font-weight:700">$ 2.107.412</span>
+      </div>
+      <div class="total-row iva">
+        <span class="total-label">IVA (21%) sobre desarrollo</span>
+        <span class="total-val">$ 420.000</span>
+      </div>
+      <div class="total-row grand" style="margin-top:6px; padding-top:12px; border-top:2px solid #1a1a1a">
+        <span class="total-label">Total primer año (con IVA)</span>
+        <span class="total-val">$ 2.527.412</span>
+      </div>
+      <div class="total-row" style="margin-top:4px">
+        <span class="total-label" style="font-size:12px;color:#888">Renovación anual (a partir del año 2)</span>
+        <span class="total-val" style="font-size:13px;color:#888;font-weight:500">$ 107.412</span>
+      </div>
+    </div>
+
+    <!-- NOTAS -->
+    <div class="notes">
+      <div class="notes-title">Condiciones y notas</div>
+      <ul>
+        <li>Precios expresados en pesos argentinos (ARS). Sin IVA salvo donde se indica.</li>
+        <li>El desarrollo ($2.000.000) se abona en un único pago contra entrega, o 50% al inicio / 50% al finalizar.</li>
+        <li>Los servicios de infraestructura (dominio + servidor) se facturan por separado al proveedor correspondiente.</li>
+        <li>El bot de WhatsApp requiere además una API key de Anthropic (Claude), facturada directamente por Anthropic según consumo.</li>
+        <li>Presupuesto válido por 15 días desde la fecha de emisión.</li>
+      </ul>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">Libersity · Titto Gálvez</div>
+      <div class="footer-copy">No somos una academia más de emprendedores.</div>
+    </div>
+    <div class="footer-validity" id="footerValidity"></div>
+  </div>
+
+</div>
+
+<script>
+  const now = new Date();
+  const opts = { day: '2-digit', month: 'long', year: 'numeric' };
+  const locale = 'es-AR';
+  document.getElementById('fechaDoc').textContent = now.toLocaleDateString(locale, opts);
+
+  const expiry = new Date(now);
+  expiry.setDate(expiry.getDate() + 15);
+  document.getElementById('footerValidity').textContent = 'Válido hasta: ' + expiry.toLocaleDateString(locale, opts);
+</script>
+</body>
+</html>
